@@ -35,15 +35,18 @@ window.renderStatistics = function (ctx, players, times) {
 
   for (i = 0; i < players.length; i++) {
     time = Math.ceil(times[i]);
-
     var barHeght = BAR_HEIGHT * time / timeMax;
+
     ctx.fillText(time, CLOUD_X + 4 * GAP + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - 5 * GAP - barHeght);
+
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
       ctx.fillStyle = 'hsl(240, ' + Math.floor(Math.random() * 101) + '%, 50%)';
     }
+
     ctx.fillRect(CLOUD_X + 4 * GAP + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - 4 * GAP - barHeght, BAR_WIDTH, barHeght);
+
     ctx.fillStyle = 'black';
     ctx.fillText(players[i], CLOUD_X + 4 * GAP + (BAR_WIDTH + BAR_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - 2 * GAP);
   }
