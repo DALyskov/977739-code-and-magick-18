@@ -120,8 +120,8 @@
       document.removeEventListener('mouseup', mouseUpHendler);
 
       if (draggedMarker) {
-        var clickPreventDefaultHandler = function (evt) {
-          evt.preventDefault();
+        var clickPreventDefaultHandler = function (clickEvt) {
+          clickEvt.preventDefault();
           popupCharacter.removeEventListener('click', clickPreventDefaultHandler);
         };
         popupCharacter.addEventListener('click', clickPreventDefaultHandler);
