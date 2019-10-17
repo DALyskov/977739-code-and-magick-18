@@ -19,6 +19,7 @@
   var userFireballInput = popupCharacter.querySelector('input[name=fireball-color]');
   var popupCharacterLeft = getComputedStyle(popupCharacter).left;
   var popupCharacterTop = getComputedStyle(popupCharacter).top;
+  var popupCharacterForm = popupCharacter.querySelector('.setup-wizard-form');
 
   window.popapCharacter = {
     COAT_COLORS: COAT_COLORS,
@@ -66,6 +67,13 @@
     } else {
       target.setCustomValidity('');
     }
+  });
+
+  popupCharacterForm.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(popupCharacterForm), function () {
+      window.util.closePopup(popupCharacter);
+    }, window.util.errorHandler);
+    evt.preventDefault();
   });
 
   userWizardCoat.addEventListener('click', function () {
