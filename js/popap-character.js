@@ -22,10 +22,8 @@
   var popupCharacterForm = popupCharacter.querySelector('.setup-wizard-form');
 
   window.popapCharacter = {
-    COAT_COLORS: COAT_COLORS,
-    EYES_COLORS: EYES_COLORS,
-    popupCharacterLeft: popupCharacterLeft,
-    popupCharacterTop: popupCharacterTop
+    popupCharacterLeft: popupCharacterLeft, /* Может перенести в utils */
+    popupCharacterTop: popupCharacterTop /* Может перенести в utils */
   };
 
   popupCharacterIcon.addEventListener('click', function () {
@@ -79,11 +77,13 @@
   userWizardCoat.addEventListener('click', function () {
     userWizardCoat.style.fill = window.util.getRndElmFromArr(COAT_COLORS);
     userWizardCoatInput.value = userWizardCoat.style.fill;
+    window.similarCharacters.onCoatChange(userWizardCoat.style.fill);
   });
 
   userWizardEyes.addEventListener('click', function () {
     userWizardEyes.style.fill = window.util.getRndElmFromArr(EYES_COLORS);
     userWizardEyesInput.value = userWizardEyes.style.fill;
+    window.similarCharacters.onEyesChange(userWizardEyes.style.fill);
   });
 
   userFireball.addEventListener('click', function () {
